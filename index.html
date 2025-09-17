@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tassel Cost - Compare College Costs in Seconds</title>
+    <title>Tassel Cost - Free College Cost Comparison Tool & Student Loan Calculator</title>
+    <meta name="description" content="Compare college costs from 3,000+ schools instantly. Official College Scorecard data. Free student loan calculator. Find the best value for your education investment.">
     <style>
         * {
             margin: 0;
@@ -38,9 +39,26 @@
         }
 
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Header Ad Banner */
+        .header-ad {
+            background: var(--light-gold);
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .ad-placeholder {
+            background: var(--medium-gray);
+            color: var(--text-gray);
             padding: 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            border: 2px dashed var(--text-gray);
         }
 
         /* Header */
@@ -65,6 +83,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            text-decoration: none;
         }
 
         .logo-icon {
@@ -117,6 +136,123 @@
             font-weight: 500;
         }
 
+        /* Navigation */
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-green);
+        }
+
+        .dropdown-arrow {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-link:hover {
+            background: var(--mint-green);
+            color: var(--primary-green);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            z-index: 1001;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary-green);
+            cursor: pointer;
+            float: right;
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            padding: 15px 0;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
 
         /* Hero Section */
         .hero {
@@ -128,6 +264,83 @@
             max-width: 1400px;
             text-align: center;
             color: white;
+        }
+
+        /* Main Content Layout */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-ad {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .sidebar-widget {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-widget h3 {
+            color: var(--dark-green);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .related-links a {
+            display: block;
+            padding: 10px 0;
+            color: var(--primary-green);
+            text-decoration: none;
+            border-bottom: 1px solid var(--light-gray);
+            transition: color 0.3s ease;
+        }
+
+        .related-links a:hover {
+            color: var(--dark-green);
+        }
+
+        .related-links a:last-child {
+            border-bottom: none;
+        }
+
+        .cta-button {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
         }
 
         .hero h1 {
@@ -647,6 +860,69 @@
         }
 
 
+        /* Footer */
+        .footer {
+            background: var(--dark-green);
+            color: white;
+            padding: 40px 20px 20px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid var(--primary-green);
+            font-size: 14px;
+        }
+
+        .footer-ad {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 32px;
@@ -665,46 +941,142 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .logo-title {
+                font-size: 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header Ad Banner -->
+    <div class="header-ad">
+        <div class="ad-placeholder">
+            728x90 Header Advertisement
+        </div>
+    </div>
+
+    <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <div class="logo-icon">
                     <span class="cap-icon">🎓</span>
                     <div class="dollar-overlay">$</div>
                 </div>
                 <div class="logo-text">
                     <div class="logo-title">Tassel Cost</div>
-                    <div class="logo-tagline">Know the Price, Earn the Degree</div>
+                    <div class="logo-tagline">Your College Cost Resource</div>
                 </div>
-            </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="main-nav">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">🏠 Home</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">
+                        📚 College Costs
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="dropdown">
+                        <a href="college-costs-guide.html" class="dropdown-link">Complete Guide to College Costs</a>
+                        <a href="in-state-vs-out-state.html" class="dropdown-link">In-State vs Out-of-State Tuition</a>
+                        <a href="hidden-college-costs.html" class="dropdown-link">Hidden College Costs</a>
+                        <a href="college-cost-trends.html" class="dropdown-link">College Cost Trends by State</a>
+                        <a href="community-vs-university.html" class="dropdown-link">Community College vs University</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">
+                        💰 Financial Aid
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="dropdown">
+                        <a href="financial-aid-guide.html" class="dropdown-link">How to Apply for Financial Aid</a>
+                        <a href="student-loan-types.html" class="dropdown-link">Student Loan Types Explained</a>
+                        <a href="scholarship-strategies.html" class="dropdown-link">Scholarship Search Strategies</a>
+                        <a href="reduce-college-expenses.html" class="dropdown-link">Tips to Reduce College Expenses</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link">
+                        📊 Planning
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="dropdown">
+                        <a href="college-budgeting.html" class="dropdown-link">How to Budget for College</a>
+                        <a href="degree-roi.html" class="dropdown-link">ROI: Which Degrees Pay Off</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="about.html" class="nav-link">ℹ️ About</a>
+                </div>
+                <div class="nav-item">
+                    <a href="contact.html" class="nav-link">📞 Contact</a>
+                </div>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
         </div>
     </header>
 
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileMenu()">✕</button>
+        <a href="index.html" class="mobile-nav-link">🏠 Home</a>
+        <a href="college-costs-guide.html" class="mobile-nav-link">📚 Complete Guide to College Costs</a>
+        <a href="in-state-vs-out-state.html" class="mobile-nav-link">📍 In-State vs Out-of-State Tuition</a>
+        <a href="financial-aid-guide.html" class="mobile-nav-link">💰 How to Apply for Financial Aid</a>
+        <a href="student-loan-types.html" class="mobile-nav-link">🏦 Student Loan Types Explained</a>
+        <a href="scholarship-strategies.html" class="mobile-nav-link">🏆 Scholarship Search Strategies</a>
+        <a href="community-vs-university.html" class="mobile-nav-link">🏫 Community College vs University</a>
+        <a href="hidden-college-costs.html" class="mobile-nav-link">👁️ Hidden College Costs</a>
+        <a href="college-budgeting.html" class="mobile-nav-link">📋 How to Budget for College</a>
+        <a href="college-cost-trends.html" class="mobile-nav-link">📈 College Cost Trends by State</a>
+        <a href="degree-roi.html" class="mobile-nav-link">💹 ROI: Which Degrees Pay Off</a>
+        <a href="reduce-college-expenses.html" class="mobile-nav-link">💡 Tips to Reduce College Expenses</a>
+        <a href="about.html" class="mobile-nav-link">ℹ️ About Us</a>
+        <a href="contact.html" class="mobile-nav-link">📞 Contact Us</a>
+        <a href="privacy-policy.html" class="mobile-nav-link">🔒 Privacy Policy</a>
+        <a href="terms-of-service.html" class="mobile-nav-link">📋 Terms of Service</a>
+    </div>
+
     <!-- Hero Section -->
     <div class="hero">
-        <h1>Compare <span class="white-text">college costs</span> in <span class="gold-text">seconds.</span></h1>
-        <p>Type to select up to 3 colleges. We pull current in-state and out-of-state tuition from College Scorecard.</p>
+        <h1>Your Complete <span class="white-text">College Cost</span> <span class="gold-text">Resource</span></h1>
+        <p>Compare costs from 3,000+ colleges, calculate loan payments, and access comprehensive guides to make informed education decisions. All free, all current data.</p>
         <div class="features">
             <div class="feature">
                 <span class="feature-icon">🎓</span>
                 <span>Official College Scorecard data</span>
             </div>
             <div class="feature">
-                <span class="feature-icon">💵</span>
-                <span>Clear in-state vs out-of-state</span>
+                <span class="feature-icon">💰</span>
+                <span>Free loan calculator & planning tools</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">📚</span>
+                <span>Expert guides & financial aid resources</span>
             </div>
             <div class="feature">
                 <span class="feature-icon">📊</span>
-                <span>Simple, transparent totals for your decision</span>
+                <span>Compare costs side-by-side instantly</span>
             </div>
         </div>
     </div>
 
-    <div class="container">
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="main-content">
+            <div class="container">
         <!-- Search Section -->
         <div class="search-section">
             <div class="search-header">
@@ -783,12 +1155,91 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
 
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Sidebar Ad -->
+            <div class="sidebar-ad">
+                <div class="ad-placeholder">
+                    300x250 Sidebar Advertisement
+                </div>
+            </div>
+
+            <!-- Related Links Widget -->
+            <div class="sidebar-widget">
+                <h3>Popular Resources</h3>
+                <div class="related-links">
+                    <a href="college-costs-guide.html">📚 Complete College Costs Guide</a>
+                    <a href="financial-aid-guide.html">💰 Financial Aid Application Help</a>
+                    <a href="in-state-vs-out-state.html">📍 In-State vs Out-of-State Guide</a>
+                    <a href="scholarship-strategies.html">🏆 Scholarship Search Strategies</a>
+                    <a href="student-loan-types.html">🏦 Student Loan Types Explained</a>
+                    <a href="college-budgeting.html">📋 College Budgeting Tips</a>
+                </div>
+            </div>
+
+            <!-- CTA Widget -->
+            <div class="sidebar-widget">
+                <h3>Need Help Planning?</h3>
+                <p>Our comprehensive guides cover everything from hidden costs to financial aid strategies. Start making informed decisions about your education investment.</p>
+                <a href="college-costs-guide.html" class="cta-button">Explore Guides →</a>
+            </div>
+
+            <!-- Another Sidebar Ad -->
+            <div class="sidebar-ad">
+                <div class="ad-placeholder">
+                    300x600 Sidebar Advertisement
+                </div>
+            </div>
+        </aside>
     </div>
 
-    <footer style="text-align: center; padding: 20px; margin-top: 50px; background: #f5f5f5;">
-        <p>© 2025 Tassel Cost | <a href="terms.html" target="_blank">Terms & Conditions</a> | Contact: tasselcost@gmail.com</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Footer Ad -->
+        <div class="footer-ad">
+            <div class="ad-placeholder">
+                728x90 Footer Advertisement
+            </div>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>College Costs</h4>
+                <a href="college-costs-guide.html">Complete Guide to College Costs</a>
+                <a href="in-state-vs-out-state.html">In-State vs Out-of-State Tuition</a>
+                <a href="hidden-college-costs.html">Hidden College Costs</a>
+                <a href="college-cost-trends.html">Cost Trends by State</a>
+                <a href="community-vs-university.html">Community vs University</a>
+            </div>
+            <div class="footer-section">
+                <h4>Financial Aid</h4>
+                <a href="financial-aid-guide.html">Financial Aid Guide</a>
+                <a href="student-loan-types.html">Student Loan Types</a>
+                <a href="scholarship-strategies.html">Scholarship Strategies</a>
+                <a href="reduce-college-expenses.html">Reduce Expenses</a>
+            </div>
+            <div class="footer-section">
+                <h4>Planning Tools</h4>
+                <a href="index.html">Compare Colleges</a>
+                <a href="#calculator">Loan Calculator</a>
+                <a href="college-budgeting.html">College Budgeting</a>
+                <a href="degree-roi.html">Degree ROI Analysis</a>
+            </div>
+            <div class="footer-section">
+                <h4>About Tassel Cost</h4>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Tassel Cost. All rights reserved. | Making college costs transparent and accessible.</p>
+        </div>
     </footer>
 
     <script>
@@ -1177,9 +1628,35 @@
             }
         });
 
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const mobileNav = document.getElementById('mobileNav');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (mobileNav && toggle && !mobileNav.contains(e.target) && !toggle.contains(e.target)) {
+                mobileNav.classList.remove('active');
+            }
+        });
+
         // Initialize calculator on load
         document.addEventListener('DOMContentLoaded', function() {
             calculateLoan();
+        });
+
+        // Add anchor for calculator link
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.location.hash === '#calculator') {
+                // Switch to calculator tab
+                document.querySelector('.tab:nth-child(2)').click();
+                // Scroll to calculator
+                document.getElementById('calculatorTab').scrollIntoView({ behavior: 'smooth' });
+            }
         });
     </script>
 </body>
